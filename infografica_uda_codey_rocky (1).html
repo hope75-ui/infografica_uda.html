@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografica UDA: Codey e i Numeri Coniglio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #1a202c;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .card {
+            transition: transform 0.2s ease-in-out, shadow 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+        }
+        .step-connector {
+            width: 2px;
+            background: #cbd5e0;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+<!-- 
+    CHOSEN PALETTE: "Energetic & Playful"
+    Colors Used: 
+    - Primary Blue: #1E90FF
+    - Vibrant Orange: #FF8C00
+    - Bright Yellow: #FFD700
+    - Deep Purple: #8A2BE2
+    - Mint Green: #00FA9A
+-->
+
+<!-- 
+    NARRATIVE PLAN SUMMARY:
+    1. Hero Section: Introduction to the UDA "Codey e i Numeri Coniglio" and the narrative hook (Donald Duck in Mathmagic Land).
+    2. KPI Overview: Quick stats on hours, students, and total budget.
+    3. The Fibonacci Growth: A line chart visualizing the exponential increase of the "Rabbit Numbers" to explain the logic.
+    4. Project Roadmap: A vertical step-by-step timeline of the 4 project phases.
+    5. Financial Distribution: A donut chart showing how the €215 budget is allocated.
+    6. Evaluation & Weights: A radar chart showing the balance between technical, mathematical, and social goals.
+    7. Conclusion: Emphasis on the "Bug Philosophy" as a learning tool.
+-->
+
+<!-- 
+    VISUALIZATION LOGIC:
+    - Fibonacci Growth -> Change/Trend -> Chart.js Line Chart (Logarithmic scale context).
+    - Budget Breakdown -> Composition -> Chart.js Donut Chart (Clear segmentation).
+    - Evaluation Weights -> Compare -> Chart.js Radar Chart (Balanced view of 4 criteria).
+    - Phases Timeline -> Organize -> Structured HTML/CSS (Responsive vertical flow).
+    - KPIs -> Inform -> Big Bold Text & Styled Cards.
+    
+    CONFIRMATION: NEITHER Mermaid JS NOR SVG were used in this output. 
+    Icons are implemented via Unicode characters.
+-->
+
+<nav class="sticky top-0 bg-white shadow-md z-50 py-4 px-6">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <h1 class="text-xl font-bold text-blue-600">Codey & I Numeri Coniglio</h1>
+        <div class="hidden md:flex space-x-6 font-semibold text-gray-600">
+            <a href="#intro" class="hover:text-blue-500">Progetto</a>
+            <a href="#fibonacci" class="hover:text-blue-500">La Successione</a>
+            <a href="#roadmap" class="hover:text-blue-500">Fasi</a>
+            <a href="#budget" class="hover:text-blue-500">Risorse</a>
+        </div>
+    </div>
+</nav>
+
+<main class="max-w-7xl mx-auto px-4 py-12">
+    <!-- Header Section -->
+    <header id="intro" class="text-center mb-16">
+        <span class="bg-orange-100 text-orange-600 px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider">Robotica Educativa 2024</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold mt-4 mb-6 text-gray-900 leading-tight">Trasformare la Matematica <br> in Movimento 🤖🐇</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Ispirato dal classico Disney "Paperino nel mondo della Matemagica", questo progetto porta gli alunni di 10-11 anni alla scoperta della successione di Fibonacci attraverso il disegno, l'osservazione della natura e la programmazione a blocchi.
+        </p>
+    </header>
+
+    <!-- KPI Grid -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border-b-4 border-blue-500 card">
+            <p class="text-sm font-semibold text-gray-500 uppercase">Durata Totale</p>
+            <p class="text-3xl font-bold text-gray-800">24 Ore</p>
+            <p class="text-xs text-gray-400 mt-2">Distribuite su 2 quadrimestri</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border-b-4 border-orange-500 card">
+            <p class="text-sm font-semibold text-gray-500 uppercase">Target Alunni</p>
+            <p class="text-3xl font-bold text-gray-800">18 Studenti</p>
+            <p class="text-xs text-gray-400 mt-2">Classe 5ª Primaria / 1ª Secondaria</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border-b-4 border-purple-500 card">
+            <p class="text-sm font-semibold text-gray-500 uppercase">Robot Scelto</p>
+            <p class="text-3xl font-bold text-gray-800">Codey Rocky</p>
+            <p class="text-xs text-gray-400 mt-2">Makeblock mBlock 5</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border-b-4 border-green-500 card">
+            <p class="text-sm font-semibold text-gray-500 uppercase">Budget Totale</p>
+            <p class="text-3xl font-bold text-gray-800">€ 215,00</p>
+            <p class="text-xs text-gray-400 mt-2">Inclusi materiali e imprevisti</p>
+        </div>
+    </section>
+
+    <!-- Data Section: Fibonacci Growth -->
+    <section id="fibonacci" class="bg-white rounded-3xl shadow-lg p-8 mb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+            <div class="lg:col-span-1">
+                <h3 class="text-2xl font-bold mb-4">La Logica dei Conigli</h3>
+                <p class="text-gray-600 mb-6">
+                    La successione di Fibonacci non è solo una lista di numeri, ma un modello di crescita organica. 
+                    Ogni termine è la somma dei due precedenti: 1, 1, 2, 3, 5, 8, 13...
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <span class="bg-blue-100 text-blue-600 font-bold p-2 rounded-lg mr-4">01</span>
+                        <p class="text-sm">Iniziamo disegnando coppie di conigli mese per mese.</p>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-orange-100 text-orange-600 font-bold p-2 rounded-lg mr-4">02</span>
+                        <p class="text-sm">Trasformiamo i numeri in quadrati su carta a quadretti.</p>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-purple-100 text-purple-600 font-bold p-2 rounded-lg mr-4">03</span>
+                        <p class="text-sm">Infine, istruiamo il robot a percorrere i lati di quei quadrati.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:col-span-2">
+                <div class="chart-container">
+                    <canvas id="fibonacciChart"></canvas>
+                </div>
+                <p class="text-center text-xs text-gray-400 mt-4 italic">Visualizzazione della crescita dei numeri coniglio fino all'ottavo mese.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Roadmap (Timeline) -->
+    <section id="roadmap" class="mb-16">
+        <h3 class="text-3xl font-extrabold text-center mb-12 italic">Il Viaggio del Progetto</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="relative flex flex-col items-center text-center p-6 bg-white rounded-2xl shadow-sm">
+                <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl mb-4 shadow-lg shadow-blue-200">1</div>
+                <h4 class="font-bold text-lg mb-2">Fase Teorica</h4>
+                <p class="text-sm text-gray-500">Visione del film Disney e scoperta della regola dei conigli tramite il disegno manuale.</p>
+            </div>
+            <div class="relative flex flex-col items-center text-center p-6 bg-white rounded-2xl shadow-sm">
+                <div class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-xl mb-4 shadow-lg shadow-orange-200">2</div>
+                <h4 class="font-bold text-lg mb-2">Parlare al Robot</h4>
+                <p class="text-sm text-gray-500">Introduzione a mBlock 5 e programmazione di figure semplici come il quadrato.</p>
+            </div>
+            <div class="relative flex flex-col items-center text-center p-6 bg-white rounded-2xl shadow-sm">
+                <div class="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-xl mb-4 shadow-lg shadow-purple-200">3</div>
+                <h4 class="font-bold text-lg mb-2">Il Percorso</h4>
+                <p class="text-sm text-gray-500">Implementazione dell'algoritmo dinamico per far muovere Codey sulla spirale.</p>
+            </div>
+            <div class="relative flex flex-col items-center text-center p-6 bg-white rounded-2xl shadow-sm">
+                <div class="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center font-bold text-xl mb-4 shadow-lg shadow-green-200">4</div>
+                <h4 class="font-bold text-lg mb-2">Gara-Mostra</h4>
+                <p class="text-sm text-gray-500">Presentazione pubblica dei risultati e spiegazione dei bug risolti dai gruppi.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget and Evaluation Grid -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+        <!-- Budget Section -->
+        <div id="budget" class="bg-white rounded-3xl shadow-lg p-8">
+            <h3 class="text-2xl font-bold mb-2">Distribuzione Budget</h3>
+            <p class="text-gray-500 text-sm mb-8">Investimento complessivo per 18 alunni</p>
+            <div class="chart-container">
+                <canvas id="budgetChart"></canvas>
+            </div>
+            <div class="mt-6 flex flex-wrap justify-center gap-4">
+                <span class="flex items-center text-xs text-gray-600"><div class="w-3 h-3 rounded-full bg-blue-500 mr-2"></div> Robotica</span>
+                <span class="flex items-center text-xs text-gray-600"><div class="w-3 h-3 rounded-full bg-orange-400 mr-2"></div> Cancelleria</span>
+                <span class="flex items-center text-xs text-gray-600"><div class="w-3 h-3 rounded-full bg-purple-400 mr-2"></div> Stampe</span>
+                <span class="flex items-center text-xs text-gray-600"><div class="w-3 h-3 rounded-full bg-green-400 mr-2"></div> Imprevisti</span>
+            </div>
+        </div>
+
+        <!-- Evaluation Weights Section -->
+        <div class="bg-white rounded-3xl shadow-lg p-8">
+            <h3 class="text-2xl font-bold mb-2">Pesi Valutazione</h3>
+            <p class="text-gray-500 text-sm mb-8">Equilibrio tra competenze tecniche e trasversali</p>
+            <div class="chart-container">
+                <canvas id="evaluationChart"></canvas>
+            </div>
+            <p class="mt-6 text-sm text-gray-600 italic border-l-4 border-orange-500 pl-4">
+                "Non vince chi è più veloce, ma chi sa spiegare meglio come ha corretto i propri errori."
+            </p>
+        </div>
+    </section>
+
+    <!-- Plotly Advanced Analysis -->
+    <section class="bg-white rounded-3xl shadow-lg p-8 mb-16 overflow-hidden">
+        <h3 class="text-2xl font-bold mb-2">Distribuzione Ore per Fase</h3>
+        <p class="text-gray-500 text-sm mb-8 italic">Analisi dell'impegno temporale tra teoria e implementazione pratica</p>
+        <div id="plotlyPhaseChart" class="w-full h-80"></div>
+    </section>
+
+    <footer class="text-center pb-12">
+        <div class="inline-block bg-gray-100 p-8 rounded-2xl max-w-2xl">
+            <h4 class="font-bold text-gray-800 mb-2">La Filosofia del Bug 🐞</h4>
+            <p class="text-gray-600 text-sm">
+                In questo progetto, l'errore non è un fallimento ma un indizio. Ogni settimana celebriamo il "Bug risolto", trasformando il debugging in un esercizio riflessivo fondamentale per lo sviluppo del pensiero computazionale.
+            </p>
+        </div>
+        <p class="mt-12 text-gray-400 text-xs">UDA «Codey e i Numeri Coniglio» · Framework UniTo / Master MEIA</p>
+    </footer>
+</main>
+
+<script>
+    // Utility for label wrapping (16 characters)
+    function wrapLabels(labels) {
+        return labels.map(label => {
+            if (typeof label === 'string' && label.length > 16) {
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + word).length > 16) {
+                        lines.push(currentLine.trim());
+                        currentLine = word + ' ';
+                    } else {
+                        currentLine += word + ' ';
+                    }
+                });
+                lines.push(currentLine.trim());
+                return lines;
+            }
+            return label;
+        });
+    }
+
+    // Default Tooltip Config
+    const tooltipConfig = {
+        callbacks: {
+            title: function(tooltipItems) {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
+                }
+            }
+        }
+    };
+
+    // Chart 1: Fibonacci Growth (Line Chart)
+    const fibCtx = document.getElementById('fibonacciChart').getContext('2d');
+    new Chart(fibCtx, {
+        type: 'line',
+        data: {
+            labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto'],
+            datasets: [{
+                label: 'Numero Coppie Conigli',
+                data: [1, 1, 2, 3, 5, 8, 13, 21],
+                borderColor: '#1E90FF',
+                backgroundColor: 'rgba(30, 144, 255, 0.1)',
+                borderWidth: 4,
+                tension: 0.4,
+                fill: true,
+                pointBackgroundColor: '#FF8C00',
+                pointRadius: 6
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                legend: { display: false },
+                tooltip: tooltipConfig
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: { display: false }
+                },
+                x: {
+                    grid: { display: false }
+                }
+            }
+        }
+    });
+
+    // Chart 2: Budget Breakdown (Donut Chart)
+    const budgetCtx = document.getElementById('budgetChart').getContext('2d');
+    new Chart(budgetCtx, {
+        type: 'doughnut',
+        data: {
+            labels: wrapLabels(['Hardware Codey Rocky', 'Carta e Cancelleria', 'Stampe Didattiche', 'Fondo Imprevisti']),
+            datasets: [{
+                data: [110, 55, 12, 38],
+                backgroundColor: ['#1E90FF', '#FF8C00', '#8A2BE2', '#00FA9A'],
+                borderWidth: 0,
+                hoverOffset: 15
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            cutout: '70%',
+            plugins: {
+                legend: { display: false },
+                tooltip: tooltipConfig
+            }
+        }
+    });
+
+    // Chart 3: Evaluation Criteria (Radar Chart)
+    const evalCtx = document.getElementById('evaluationChart').getContext('2d');
+    new Chart(evalCtx, {
+        type: 'radar',
+        data: {
+            labels: wrapLabels(['Funzionamento Programma', 'Correttezza Matematica', 'Collaborazione Gruppo', 'Efficacia Comunicazione']),
+            datasets: [{
+                label: 'Peso %',
+                data: [35, 25, 25, 15],
+                backgroundColor: 'rgba(138, 43, 226, 0.2)',
+                borderColor: '#8A2BE2',
+                pointBackgroundColor: '#FF8C00'
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: tooltipConfig
+            },
+            scales: {
+                r: {
+                    angleLines: { display: true },
+                    suggestedMin: 0,
+                    suggestedMax: 40
+                }
+            }
+        }
+    });
+
+    // Plotly Implementation: Phase Hours Distribution
+    // Using Canvas/WebGL compatible rendering
+    const plotlyData = [{
+        x: ['Fase 1 (Teoria)', 'Fase 2 (mBlock)', 'Fase 3 (Percorso)', 'Fase 4 (Mostra)'],
+        y: [10, 4, 7, 3],
+        type: 'bar',
+        marker: {
+            color: ['#1E90FF', '#FFD700', '#FF8C00', '#00FA9A'],
+            opacity: 0.8
+        }
+    }];
+
+    const plotlyLayout = {
+        margin: { t: 20, b: 60, l: 40, r: 20 },
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)',
+        xaxis: {
+            tickfont: { size: 11 }
+        },
+        yaxis: {
+            title: 'Ore',
+            gridcolor: '#edf2f7'
+        },
+        font: { family: 'Inter, sans-serif' }
+    };
+
+    Plotly.newPlot('plotlyPhaseChart', plotlyData, plotlyLayout, {responsive: true, displayModeBar: false});
+</script>
+
+</body>
+</html>
